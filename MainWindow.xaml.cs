@@ -22,6 +22,7 @@ namespace ADONETpractice
     {
         public MainWindow()
         {
+           
             InitializeComponent();
         }
 

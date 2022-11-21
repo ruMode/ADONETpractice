@@ -25,34 +25,45 @@
             </ComboBox>
         </StackPanel>
 
-        <ListView x:Name="materialsLV" Grid.Row="1" Margin="20 0">
+        <ListView x:Name="materialsLV" Grid.Row="1" Margin="20 0" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <WrapPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.RowSpan="3" Stretch="UniformToFill">
-                                <Image.Source>
-                                    <Binding Path="ImagePath">
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>materials/picture.png</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-                            </Image>
-                            
-                        </Grid>
-                    </WrapPanel>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.RowSpan="3" Stretch="UniformToFill" Width="100" Height="100" 
+                               Source="{Binding Image, TargetNullValue=Resources/picture.png}">
+                            <!--<Image.Source>
+                                <Binding Path="Image">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>Assets/picture.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>-->
+                        </Image>
+
+                        <TextBlock Text="{Binding MaterialType.Title}" Grid.Column="1" Margin="20 0"/>
+
+                        <TextBlock Text="{Binding Title}" Grid.Column="2"/>
+
+                        <TextBlock Text="{Binding MinCount, StringFormat={}Минимальное количество: {0}шт.}" Grid.Column="2" Grid.Row="1"/>
+
+                        <TextBlock Text="{Binding Supplier.Title, StringFormat={} Поставщики: {0} }" Grid.Column="1" Grid.Row="2"/>
+
+                        <TextBlock Text="{Binding CountInStock, StringFormat={}Остаток: {0}шт.}" Grid.Column="3" HorizontalAlignment="Right"/>
+                    </Grid>
+                    
                     
                     
                 </DataTemplate>

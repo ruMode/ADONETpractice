@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADONETpractice.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace ADONETpractice
     /// </summary>
     public partial class MaterialsPage : Page
     {
+        adonetpracticeEntities entities = new adonetpracticeEntities();
         public MaterialsPage()
         {
             InitializeComponent();
+
+            
+
+        }
+        protected override void OnInitialized(EventArgs e)
+        {
+            materialsLV.ItemsSource = entities.Material.ToList();
+            base.OnInitialized(e);
         }
     }
 }
